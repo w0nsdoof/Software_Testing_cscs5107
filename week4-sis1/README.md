@@ -1,7 +1,7 @@
-# SIS 1 — Test Documentation Pack: Money Transfer with SMS Verification
+# SIS 1 test documentation pack: money transfer with SMS verification
 
 **Course:** CSCS5107 Software Testing and Debugging · KBTU · Fall 2026
-**Assignment:** Week 4 — Test documentation and bug reporting
+**Assignment:** Week 4, test documentation and bug reporting
 **Student:** Zhumabayev Askar Erikuli
 **Builds on:** [Week 3 test design](../week3-test-design/README.md) (equivalence partitions, 3-value BVA, collapsed decision table, SMS state model)
 **Standard:** ISO/IEC/IEEE 29119-3 document names and test case fields
@@ -21,10 +21,10 @@
 
 A customer sends money from their current account in the mobile app.
 
-- A single transfer is **100 to 500,000 KZT**, in whole tenge only.
-- The total sent per day is limited to **1,000,000 KZT**. The daily total resets at **00:00 Almaty time (UTC+5)**.
-- A transfer **above 100,000 KZT** needs an **SMS code**: 6 digits, valid for **120 seconds**. The **third wrong code** cancels the transfer.
-- If a transfer breaks both the amount rule and the daily limit, the **amount error is shown** (amount error has priority).
+- A single transfer is 100 to 500,000 KZT, in whole tenge only.
+- The total sent per day is limited to 1,000,000 KZT. The daily total resets at 00:00 Almaty time (UTC+5).
+- A transfer above 100,000 KZT needs a 6-digit SMS code, valid for 120 seconds. The third wrong code cancels the transfer.
+- If a transfer breaks both the amount rule and the daily limit, only the amount error is shown.
 
 ## Requirement catalogue
 
@@ -43,37 +43,37 @@ IDs `REQ-AMT-001…004` are kept from Week 3 so the Week 3 → Week 4 trace stay
 | REQ-SMS-002 | The SMS code is valid for 120 seconds; after that the transfer is cancelled and the code is rejected | Brief |
 | REQ-SMS-003 | The third wrong code cancels the transfer | Brief |
 | REQ-SMS-004 | A confirmed transfer is executed exactly once; events that arrive after the transfer has reached Confirmed, Blocked or Expired do not change it | Derived from the Week 3 state model. Waiting for BA confirmation |
-| REQ-BAL-001 | Behaviour when the balance is lower than the amount | **Not in the brief** (Week 3 BA question 1) |
+| REQ-BAL-001 | Behaviour when the balance is lower than the amount | Not in the brief (Week 3 BA question 1) |
 
-**Change from Week 3:** in Week 3 the SMS trigger was cited under both REQ-AMT-002 and REQ-AMT-003. From Week 4 it belongs to REQ-AMT-003 only.
+Change from Week 3: in Week 3 the SMS trigger was cited under both REQ-AMT-002 and REQ-AMT-003. From Week 4 it belongs to REQ-AMT-003 only.
 
 ## Shared test environment and data
 
 Every test case in this pack uses the setup below. Test cases refer to it by ID.
 
-> **Assumed environment.** The brief does not describe a real system, so this environment, the test customers and the UI paths are **hypothetical**. They are written as an entry criterion would state them for a real project. Replace them with the real names once a build exists.
+> The brief does not describe a real system, so the environment, test customers and UI paths below are hypothetical. They are written the way an entry criterion would state them on a real project, and should be replaced with real names once a build exists.
 
-**Environment ENV-T2**
+### Environment ENV-T2
 
 - Mobile app (iOS) installed from the TEST-2 distribution channel. The build number is recorded in each execution log.
 - Back end: test environment TEST-2.
-- SMS gateway stub. Every code sent to a test phone number appears in the **SMS stub inbox** (web page, filter by phone number).
-- Back-office **Test Support → Reset customer** restores a test customer to the balance and daily total in the table below.
+- SMS gateway stub. Every code sent to a test phone number appears in the SMS stub inbox, a web page you can filter by phone number.
+- The back-office function Test Support → Reset customer restores a test customer to the balance and daily total in the table below.
 
-**Test customers**
+### Test customers
 
 | ID | Login | Phone | Source account | Recipient account | Balance after reset | Daily total after reset |
 |----|-------|-------|----------------|-------------------|--------------------:|------------------------:|
 | TD-01 | `test01` | +7 700 000 0001 | Current ••1001 | Deposit ••4417 | 2,000,000 KZT | 0 KZT |
 | TD-02 | `test02` | +7 700 000 0002 | Current ••2001 | Deposit ••4427 | 2,000,000 KZT | 900,000 KZT |
 
-Both customers hold **2,000,000 KZT**, so the balance can never be the reason a transfer is rejected. REQ-BAL-001 is undefined and is kept out of every test on purpose.
+Both customers hold 2,000,000 KZT, so the balance can never be the reason a transfer is rejected. REQ-BAL-001 is undefined and is kept out of every test on purpose.
 
-**Where to read the results**
+### Where to read the results
 
-- **Balance:** Accounts screen, source account card.
-- **Daily total:** Profile → Limits → *Used today*.
-- **Debit entries:** source account → Statement. It lists only money that actually moved: amount, time and transfer ID. Expired or cancelled transfers do **not** appear here.
-- **Transfer status:** Transfers → History. It lists every transfer, including expired and cancelled ones, with its status: *Waiting for code*, *Completed*, *Cancelled* or *Expired*.
+- Balance: Accounts screen, source account card.
+- Daily total: Profile → Limits → *Used today*.
+- Debit entries: source account → Statement. It lists only money that actually moved: amount, time and transfer ID. Expired or cancelled transfers do not appear here.
+- Transfer status: Transfers → History. It lists every transfer, including expired and cancelled ones, with its status: *Waiting for code*, *Completed*, *Cancelled* or *Expired*.
 
-**Timing rule:** run tests between 01:00 and 23:00 Almaty time, so the midnight reset cannot interfere.
+Run tests between 01:00 and 23:00 Almaty time so the midnight reset cannot interfere.

@@ -1,8 +1,8 @@
-# CSCS5107 · Software Testing and Debugging — SIS 1
+# CSCS5107 Software Testing and Debugging: SIS 1
 
-**KBTU · Fall 2026 · Zhumabayev Askar Erikuli**
+KBTU, Fall 2026. Student: Zhumabayev Askar Erikuli.
 
-The running feature for this course is a **money transfer with SMS verification** in a mobile banking app.
+The running feature for this course is a money transfer with SMS verification in a mobile banking app.
 
 | Week | Folder | Content |
 |------|--------|---------|
