@@ -8,7 +8,7 @@ Course policy, Level 1: AI use is allowed if the prompts, the raw output and the
 | Date | 2026-10-12 |
 | Used for | Checking the Week 4 slides against the task, drafting all six Week 4 documents, converting the Week 3 Google Doc to Markdown, and creating this repository |
 | Not used for | The Week 3 test design itself: partitions, BVA, decision table, state model and risks. That is the student's own work, and Week 4 builds on it. Week 3 has its own AI section (Gemini) |
-| Raw output | The commit tagged **`ai-raw-draft`** is the unedited AI output. Every later commit is a review fix or a human change, so `git diff ai-raw-draft main` shows exactly what changed. Link: [compare ai-raw-draft...main](https://github.com/w0nsdoof/Software_Testing_cscs5107/compare/ai-raw-draft...main) |
+| Raw output | Branch **`ai-raw-draft`** holds the unedited AI output (commit `4e07921`). Every later commit is a review fix or a human change, so `git diff ai-raw-draft main` shows exactly what changed. Link: [compare ai-raw-draft...main](https://github.com/w0nsdoof/Software_Testing_cscs5107/compare/ai-raw-draft...main) |
 
 ## Prompt log
 
@@ -71,7 +71,7 @@ outline me task (Is it present in pptx i sended, matched with prompt above?)
 > Where should the pack go? → **New public repo** · Include Week 3? → **No, Week 4 only**
 > *(a few minutes later)* **nvm add wek3 too**
 
-**Raw output:** the full draft of this repository, stored at tag `ai-raw-draft`.
+**Raw output:** the full draft of this repository, stored on branch `ai-raw-draft`.
 
 ## What the AI decided, which the student must check
 
@@ -116,7 +116,7 @@ Findings from the independent run-through (another AI agent followed one test ca
 ## Verification log
 
 **Who checked:** a separate AI agent that had not seen the drafting. It followed TC-SMS-002 and DEF-003 exactly as written, as the lecturer will, skimmed TC-DEC-02 and DEF-001, and audited the arithmetic, the IDs and the links across all files.
-**Found:** 20 issues. Every balance and *Used today* value, the RTM counts and all links were correct. The fixes are in the commit after `ai-raw-draft`.
+**Found:** 20 issues. Every balance and *Used today* value, the RTM counts and all links were correct. The fixes are in the commit after `ai-raw-draft` on `main`.
 
 | # | Finding | Fix |
 |---|---------|-----|
