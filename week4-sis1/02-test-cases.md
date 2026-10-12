@@ -11,7 +11,8 @@
   - *Balance*: Accounts screen;
   - *Used today*: Profile → Limits;
   - *Statement*: source account → Statement;
-  - *SMS stub*: SMS stub inbox filtered by the customer's phone number.
+  - *SMS stub*: SMS stub inbox filtered by the customer's phone number;
+  - *History*: Transfers → History, which shows each transfer's status.
 
 **Common navigation (N1):**
 
@@ -29,7 +30,7 @@
 | [TC-AMT-007](#tc-amt-007) | 100,000 KZT executes immediately, no SMS | REQ-AMT-003 | BVA SMS threshold (on) | High |
 | [TC-DEC-01](#tc-dec-01) | Amount error shown, daily limit error suppressed | REQ-PRI-001, REQ-AMT-002, REQ-LIM-001 | Decision table Rule 1 | High |
 | [TC-DEC-02](#tc-dec-02) | Daily limit exceeded by 1 KZT rejected | REQ-LIM-001 | Decision table Rule 2 + BVA limit (above) | High |
-| [TC-LIM-001](#tc-lim-001) | Daily total reaching exactly 1,000,000 KZT allowed | REQ-LIM-001 | BVA limit (on) + Rule 4 | High |
+| [TC-LIM-001](#tc-lim-001) | Daily total reaching exactly 1,000,000 KZT allowed | REQ-LIM-001, REQ-AMT-003 | BVA limit (on) + Rule 4 | High |
 | [TC-SMS-001](#tc-sms-001) | 100,001 KZT confirmed with correct SMS code | REQ-AMT-003, REQ-SMS-001, REQ-LIM-001 | State S1→S4, Rule 3, BVA threshold (above) | Critical |
 | [TC-SMS-002](#tc-sms-002) | Third wrong code cancels the transfer | REQ-SMS-003 | State S1→S2→S3→S5 | Critical |
 | [TC-SMS-003](#tc-sms-003) | Correct code entered after 120 s is rejected | REQ-SMS-002, REQ-SMS-004 | State S1→S6, invalid S6 + correct code | Critical |
@@ -52,7 +53,7 @@
 |-------|-------|
 | **ID** | TC-AMT-001 |
 | **Traces to** | REQ-AMT-001, REQ-AMT-003 · Decision table Rule 4 · Partition P1 |
-| **Technique** | 3-value BVA, lower boundary, on-point |
+| **Technique** | BVA (2-value set), lower boundary, on-point |
 | **Priority** | High |
 | **Preconditions** | TD-01 reset (balance 2,000,000 KZT, used today 0 KZT). Logged in as `test01`. Accounts screen open |
 | **Test data** | From Current ••1001 → To Deposit ••4417; amount `100` |
@@ -85,7 +86,7 @@
 |-------|-------|
 | **ID** | TC-AMT-004 |
 | **Traces to** | REQ-AMT-001 · Decision table Rule 1 · Partition P2 |
-| **Technique** | 3-value BVA, lower boundary, below |
+| **Technique** | BVA (2-value set), lower boundary, below |
 | **Priority** | High |
 | **Preconditions** | TD-01 reset (balance 2,000,000 KZT, used today 0 KZT). Logged in as `test01`. Accounts screen open |
 | **Test data** | From Current ••1001 → To Deposit ••4417; amount `99` |
@@ -116,7 +117,7 @@
 |-------|-------|
 | **ID** | TC-AMT-002 |
 | **Traces to** | REQ-AMT-002, REQ-AMT-003 · Decision table Rule 3 · Partition P1 |
-| **Technique** | 3-value BVA, upper boundary, on-point |
+| **Technique** | BVA (2-value set), upper boundary, on-point |
 | **Priority** | High |
 | **Preconditions** | TD-01 reset (balance 2,000,000 KZT, used today 0 KZT). Logged in as `test01`. Accounts screen open |
 | **Test data** | From Current ••1001 → To Deposit ••4417; amount `500000` |
@@ -149,7 +150,7 @@
 |-------|-------|
 | **ID** | TC-AMT-005 |
 | **Traces to** | REQ-AMT-002 · Decision table Rule 1 · Partition P3 |
-| **Technique** | 3-value BVA, upper boundary, above |
+| **Technique** | BVA (2-value set), upper boundary, above |
 | **Priority** | High |
 | **Preconditions** | TD-01 reset (balance 2,000,000 KZT, used today 0 KZT). Logged in as `test01`. Accounts screen open |
 | **Test data** | From Current ••1001 → To Deposit ••4417; amount `500001` |
@@ -248,7 +249,7 @@
 | **Traces to** | REQ-LIM-001 · Decision table Rule 2 (R3) |
 | **Technique** | Decision table + BVA on the daily limit, 1 KZT above. The amount is valid and above 100,000; C3 is "don't care" for Rule 2 |
 | **Priority** | High |
-| **Preconditions** | TD-02 reset (balance 2,000,000 KZT, used today **900,000 KZT**). Logged in as `test02`. Accounts screen open |
+| **Preconditions** | TD-02 reset (balance 2,000,000 KZT, used today **900,000 KZT**). Logged in as `test02`. Accounts screen open. SMS stub inbox open for +7 700 000 0002 |
 | **Test data** | From Current ••2001 → To Deposit ••4427; amount `100001`. 900,000 + 100,001 = **1,000,001** |
 
 **Steps**
@@ -263,7 +264,7 @@
 
 | After step | Expected |
 |:----------:|----------|
-| 3 | Error: *«Daily limit of 1,000,000 KZT exceeded»*. **No** SMS code screen: the limit is checked before a code is requested |
+| 3 | Error under the Amount field: *«Daily limit of 1,000,000 KZT exceeded»*. **No** SMS code screen: the limit is checked before a code is requested |
 | 4 | No new message |
 | 5 | Balance is **2,000,000 KZT**. No new Statement entry. Used today is still **900,000 KZT** |
 
@@ -347,6 +348,45 @@
 | **Traces to** | REQ-SMS-003 · State transition S1 → S2 → S3 → S5 |
 | **Technique** | State transition testing, valid transitions on the "wrong code" event |
 | **Priority** | Critical |
+| **Preconditions** | TD-01 reset (balance 2,000,000 KZT, used today 0 KZT). Logged in as `test01`. Accounts screen open. SMS stub inbox open for +7 700 000 0001 |
+| **Test data** | From Current ••1001 → To Deposit ••4417; amount `150000`. **Wrong code W** = the newest code in the SMS stub with its last digit raised by 1 (9 → 0). Example: real `482913` → W = `482914` |
+
+**Steps**
+
+1. Perform N1 with From = Current ••1001, To = Deposit ••4417.
+2. Enter `150000` in **Amount** and tap **Continue**.
+3. In the SMS stub, read the newest code for +7 700 000 0001 and work out W.
+4. Clear the code cells if they are not empty, enter W and tap **Confirm**.
+5. Repeat step 4.
+6. Repeat step 4.
+7. Open Accounts, then the Statement of ••1001, then Profile → Limits.
+8. Open Transfers → History and check the newest transfer.
+9. Perform N1 again, enter `100`, tap **Continue**.
+
+Steps 4–6 must all be finished while the countdown still shows **0:30 or more**, so the timer cannot cancel the transfer first.
+
+**Expected results**
+
+| After step | Expected |
+|:----------:|----------|
+| 2 | SMS code screen, countdown starting at **2:00** |
+| 3 | Exactly **one** new message, with a 6-digit code |
+| 4 | Error saying the code is wrong. The code screen stays open and the countdown keeps running |
+| 5 | Same as step 4. The code screen stays open |
+| 6 | The code screen closes. A message says the transfer is **cancelled** |
+| 7 | Balance is **2,000,000 KZT**. No new Statement entry. Used today is **0 KZT** |
+| 8 | Status **Cancelled**, amount 150,000 KZT |
+| 9 | *Transfer completed*: the customer is not blocked. The brief cancels only the current transfer (see the [Week 3 AI hallucination note](../week3-test-design/README.md#what-ai-invented-hallucinations)) |
+
+The brief does not define the wrong-code error text or an attempts-remaining counter, so step 4 checks only that *an* error appears and the screen stays open.
+
+**Postconditions:** the 150,000 KZT transfer is Cancelled (state S5). TD-01 balance 1,999,900 KZT and used today 100 KZT, from step 9. Reset TD-01 before reuse.
+
+-------|-------|
+| **ID** | TC-SMS-002 |
+| **Traces to** | REQ-SMS-003 · State transition S1 → S2 → S3 → S5 |
+| **Technique** | State transition testing, valid transitions on the "wrong code" event |
+| **Priority** | Critical |
 | **Preconditions** | TD-01 reset (balance 2,000,000 KZT, used today 0 KZT). Logged in as `test01`. Accounts screen open. SMS stub inbox open |
 | **Test data** | From Current ••1001 → To Deposit ••4417; amount `150000`. **Wrong code W** = the real code with its last digit raised by 1 (9 → 0). Example: real `482913` → W = `482914` |
 
@@ -405,6 +445,8 @@ Complete steps 4–6 within 90 s of step 2.
 | 5 | Either the cells or **Confirm** are disabled, or **Confirm** returns a code-expired error. The transfer is **not** completed |
 | 6 | Balance is **2,000,000 KZT**. No new Statement entry. Used today is **0 KZT** |
 
+**Limitation:** this case runs through the app, so it passes if the app only disables the cells. It cannot show whether the **server** would still accept the code. That is checked by release checklist item 4 and, in Week 5, by an API test.
+
 **Postconditions:** the transfer is Expired (S6). TD-01 unchanged.
 
 ---
@@ -430,7 +472,7 @@ Complete steps 4–6 within 90 s of step 2.
 4. Tap **Confirm** twice in quick succession (a double tap, under 0.5 s between taps).
 5. Stay on the result screen for **130 s**. The original 120 s code timer has now passed.
 6. Open Accounts, then the Statement of ••1001, then Profile → Limits.
-7. Open the Statement entry and check the transfer status.
+7. Open Transfers → History and check the newest transfer.
 
 **Expected results**
 
@@ -439,6 +481,6 @@ Complete steps 4–6 within 90 s of step 2.
 | 4 | **One** *Transfer completed* screen. No second confirmation, no error |
 | 5 | No *expired* or *cancelled* message appears |
 | 6 | Balance is **1,899,999 KZT**. Exactly **one** new debit of **100,001 KZT**, not two. Used today is **100,001 KZT** |
-| 7 | Status is **Completed**, not Expired, not Cancelled |
+| 7 | Exactly **one** transfer of 100,001 KZT, with status **Completed** (not Expired, not Cancelled) |
 
 **Postconditions:** the transfer is Confirmed (S4). TD-01 balance 1,899,999 KZT, used today 100,001 KZT. Reset TD-01 before reuse.

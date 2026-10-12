@@ -51,6 +51,8 @@ IDs `REQ-AMT-001…004` are kept from Week 3 so the Week 3 → Week 4 trace stay
 
 Every test case in this pack uses the setup below. Test cases refer to it by ID.
 
+> **Assumed environment.** The brief does not describe a real system, so this environment, the test customers and the UI paths are **hypothetical**. They are written as an entry criterion would state them for a real project. Replace them with the real names once a build exists.
+
 **Environment ENV-T2**
 
 - Mobile app (iOS) installed from the TEST-2 distribution channel. The build number is recorded in each execution log.
@@ -71,6 +73,7 @@ Both customers hold **2,000,000 KZT**, so the balance can never be the reason a 
 
 - **Balance:** Accounts screen, source account card.
 - **Daily total:** Profile → Limits → *Used today*.
-- **Debit entries:** source account → Statement. Every entry shows amount, time and transfer ID.
+- **Debit entries:** source account → Statement. It lists only money that actually moved: amount, time and transfer ID. Expired or cancelled transfers do **not** appear here.
+- **Transfer status:** Transfers → History. It lists every transfer, including expired and cancelled ones, with its status: *Waiting for code*, *Completed*, *Cancelled* or *Expired*.
 
 **Timing rule:** run tests between 01:00 and 23:00 Almaty time, so the midnight reset cannot interfere.

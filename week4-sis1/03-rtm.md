@@ -4,7 +4,7 @@ Requirement → test case → technique → coverage. Requirement IDs are define
 
 **Coverage key:**
 
-- ✅ **Covered:** every boundary or rule of the requirement has a test in this cycle.
+- ✅ **Covered:** every boundary or rule of the requirement has a test in this cycle. Boundaries use the 2-value set: on the boundary and one step beyond it.
 - 🟡 **Partial:** part of the requirement is tested; the rest is listed in the gaps.
 - ❌ **Not covered:** no test in this cycle.
 
@@ -12,8 +12,8 @@ Requirement → test case → technique → coverage. Requirement IDs are define
 
 | Requirement | Source | Test cases | Technique | Coverage | Defects (mock) |
 |-------------|--------|------------|-----------|:--------:|----------------|
-| REQ-AMT-001 Min 100 KZT | Brief | TC-AMT-004 (99), TC-AMT-001 (100) | BVA | ✅ | — |
-| REQ-AMT-002 Max 500,000 KZT | Brief | TC-AMT-002 (500,000), TC-AMT-005 (500,001), TC-DEC-01 (600,000) | BVA, decision table | ✅ | — |
+| REQ-AMT-001 Min 100 KZT | Brief | TC-AMT-004 (99), TC-AMT-001 (100) | BVA (2-value) | ✅ | — |
+| REQ-AMT-002 Max 500,000 KZT | Brief | TC-AMT-002 (500,000), TC-AMT-005 (500,001), TC-DEC-01 (600,000) | BVA (2-value), decision table | ✅ | — |
 | REQ-AMT-003 SMS above 100,000 KZT | Brief | TC-AMT-007 (100,000 → no SMS), TC-SMS-001 (100,001 → SMS), TC-AMT-001, TC-LIM-001, TC-AMT-002 | BVA on threshold, decision table Rules 3–4 | ✅ | — |
 | REQ-AMT-004 Whole KZT, numeric only | Brief | — (Week 3 TC-AMT-006 in backlog) | EP (P4–P7) | ❌ | — |
 | REQ-LIM-001 Daily limit 1,000,000 KZT | Brief | TC-LIM-001 (= 1,000,000), TC-DEC-02 (1,000,001), TC-DEC-01; *Used today* checked in TC-AMT-001, TC-AMT-007, TC-SMS-001, TC-SMS-004 | BVA on limit, decision table Rule 2 | ✅ | — |
@@ -44,6 +44,10 @@ Requirement → test case → technique → coverage. Requirement IDs are define
 | **Invalid:** S4 + correct code (double tap) | TC-SMS-004 | ✅ |
 | **Invalid:** S6 + correct code (late input) | TC-SMS-003 | ✅ |
 | **Invalid:** S4 + timer expires (post-success timer) | TC-SMS-004 (coarse, 130 s) | 🟡 |
+| **Invalid:** S4 + wrong code (wrong code after success) | — | ❌ |
+| **Invalid:** S5 / S6 + any event (except S6 + correct code) | — | ❌ |
+
+**Note on Week 3 labels:** the Week 3 table puts *Late input* in the cell S4 + wrong code. Week 3's risk list, however, defines late input as **S6 + correct code**. Week 4 follows the risk list, and leaves S4 + wrong code uncovered (above).
 
 **Correction to Week 3:** Week 3 says the three scenarios cover all 9 valid transitions. They cover **5 of 9**. The other 4 need four more short paths (backlog TC-SMS-005…008):
 
@@ -63,6 +67,6 @@ Requirement → test case → technique → coverage. Requirement IDs are define
 | G3 | **REQ-AMT-004.** Decimals, negative, empty, text | Decimal behaviour (reject or round) is undefined (Week 3 BA Q3). The other partitions are lower risk than the SMS flow, so they were not picked for this 12-case cycle | Week 3 TC-AMT-006 stays in the backlog. Partitions P4–P7 go to the Week 5 API suite |
 | G4 | **REQ-SMS-001.** Entering a 5- or 7-digit code | Not picked for this cycle; lower risk than the timer and the attempts | Add to the exploratory session charter |
 | G5 | **REQ-SMS-002.** Exact 120 s boundary (119 s accepted / 121 s rejected) | Manual timing is not precise enough, so TC-SMS-003 uses 125 s | Automate against the API in Week 5 with a controlled clock |
-| G6 | **REQ-SMS-004.** Post-success timer race (R3) | The race lasts milliseconds and cannot be triggered by hand. DEF-003 was found in exploratory testing, not by a scripted case | Automated race test (confirm at T = 119.9 s, repeated 100×) |
+| G6 | **REQ-SMS-004.** Post-success timer race (R3) | Tapping in the last second triggers it by hand only rarely: about 3 times in 20 in DEF-003, found in ES-01. A scripted manual case would pass most of the time and prove nothing | Automated race test (confirm at T = 119.9 s, repeated 100×) |
 | G7 | 3-value BVA neighbours 98, 101, 499,999, 500,002 | The 2-value set was used in this cycle to keep it to 12 cases | Week 5 data-driven API test |
 | G8 | Pending transfers and the daily limit | **Not in the brief.** Start with 100,000 KZT already used, then open two transfers of 500,000 KZT each (two devices or two tabs). Each one alone passes the limit check (600,000 ≤ 1,000,000). If both are then confirmed, the day's total is 1,100,000 KZT | New BA question: does a pending transfer reserve its amount against the daily limit? |
