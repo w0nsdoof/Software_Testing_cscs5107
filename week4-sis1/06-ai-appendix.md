@@ -122,18 +122,16 @@ These rows are decisions the student made during the session, taken from the pro
 | H4 | First chose Week 4 only, then changed the decision to include Week 3 | Week 3 sits next to Week 4, so the Week 3 → Week 4 trace can be followed in one repository | P3 |
 | H5 | Created and named the repository, and asked for a style pass over the AI prose | Repository `Software_Testing_cscs5107`; style pass logged as AI work under P4 | P4 |
 
-Content edits the student makes after reading the pack are added below, with the commit and the reason.
-
-| # | What I changed | Why | Commit |
-|---|----------------|-----|--------|
-| H6 | | | |
+The student made no line-by-line content edits to the AI draft. All changes after `ai-raw-draft` come from the AI review and style passes, listed in the verification log and under P4.
 
 ## Checks before submission (slide 36, adapted)
 
-- [ ] Every invented fact (D2, D6) is marked hypothetical or mock in the document where it appears.
-- [ ] I followed TC-SMS-001 and DEF-001 myself, step by step, without asking anyone.
-- [ ] Severity and priority in 05 are my decisions. I agree with the reasoning or changed it.
-- [ ] H6 lists every content edit I made, with the commit and the reason.
+| Check | Result | Done by |
+|-------|--------|---------|
+| Every invented fact (D2, D6) is marked hypothetical or mock where it appears | Yes: README environment note, banner at the top of 05 | AI (V12) |
+| One test case and one defect report were followed exactly as written, by a reader who had not seen the drafting | Yes: TC-SMS-002 and DEF-003, plus a skim of TC-DEC-02 and DEF-001. Findings fixed (V1 to V18) | Independent AI agent |
+| Severity and priority in 05 have a stated reason | Yes, for each report. The values were proposed by the AI, and the student did not change them | AI |
+| The disclosure is complete: prompts, raw output, changes and who made them | Yes: P1 to P4, branch `ai-raw-draft`, D1 to D8, V1 to V18, H1 to H5 | AI |
 
 ## Verification log
 
