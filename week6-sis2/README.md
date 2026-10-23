@@ -30,7 +30,7 @@ Node 20 or newer. No environment variables are needed; the base URL is in `playw
 |------|--------------------------------|----------------------|
 | `tests/register.spec.ts` | TC-01 Register a new customer | A unique account is created, the user lands on the login page, and the same credentials then open the account page. A second test checks that an existing email is rejected. |
 | `tests/login.spec.ts` | TC-02 Log in | Valid credentials reach `/account` with the customer's name in the menu; a wrong password shows the error, stays on the login page and does not sign in. |
-| `tests/buy-product.spec.ts` | TC-03 Buy a product | Add to cart, badge shows 1, cart shows the right item, quantity and price, four-step checkout completes with a payment success message. |
+| `tests/buy-product.spec.ts` | TC-03 Buy a product | Add to cart, badge shows 1, cart shows the right item, quantity and price, four-step checkout ends with "Payment was successful" and then "Thanks for your order". |
 | `tests/compare-products.spec.ts` | TC-04 Compare two products | Adds two in-stock products to the comparison from their product pages, opens `/comparison` and checks that the table lists both names with their catalogue prices. A second test puts both in the cart and checks the summed total. |
 | `tests/reset-password.spec.ts` | TC-05 Reset a password | A known email gets a confirmation and the old password no longer signs in. An unregistered email and a malformed email are both rejected, and the user stays on the page. |
 
@@ -40,7 +40,7 @@ Ten tests in five files. Every test creates the data it needs: registration uses
 
 ```
 tests/        one spec per test case; no locators here
-pages/        one page object per screen; business actions, not element wrappers
+pages/        one page object per screen, exposing actions such as signIn() and addToCart()
 fixtures/     page objects and an API helper handed to every test
 data/         user factory (unique email per run)
 tools/        discover.mjs: lists the live data-test attributes
