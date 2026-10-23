@@ -23,11 +23,12 @@ test.describe('TC-03 Buy a product', () => {
     // checkout: sign in, confirm address, pay
     await checkoutPage.continueFromCart();
     await checkoutPage.signInIfNeeded(customer.email, customer.password);
-    await checkoutPage.confirmAddress({ street: 'Tole bi 59', city: 'Almaty', state: 'Almaty', country: 'Kazakhstan', postalCode: '050000' });
+    await checkoutPage.confirmAddress(customer);
     await checkoutPage.payWith('cash-on-delivery');
 
     await expect(checkoutPage.paymentSuccessMessage).toBeVisible();
     await expect(checkoutPage.paymentSuccessMessage).toContainText(/payment was successful/i);
+    await checkoutPage.confirmOrder();
     await expect(checkoutPage.orderConfirmation).toBeVisible();
     await expect(page).toHaveURL(/\/checkout/);
   });

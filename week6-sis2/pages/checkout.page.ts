@@ -21,7 +21,8 @@ export class CheckoutPage extends BasePage {
   }
 
   get orderConfirmation(): Locator {
-    return this.page.getByText(/thanks for your order|order was placed|invoice/i).first();
+    // Not /invoice/: the signed-in user menu holds a hidden "My invoices" link.
+    return this.page.getByText(/thanks for your order/i);
   }
 
   async open() {
@@ -42,20 +43,26 @@ export class CheckoutPage extends BasePage {
     await this.proceedFromSignIn.click();
   }
 
-  /** Step 3: the address is prefilled from the profile; fill anything empty. */
-  async confirmAddress(address: { street: string; city: string; state: string; country: string; postalCode: string }) {
+  /**
+   * Step 3: the profile prefill arrives asynchronously, so checking for empty
+   * fields races it; set every field to the expected address instead.
+   * Entering a postcode triggers a lookup that overwrites street, city and state
+   * with a made-up address the invoice API then rejects for the country, so
+   * those three are filled only after the lookup has answered.
+   */
+  async confirmAddress(address: { street: string; houseNumber: string; city: string; state: string; country: string; postalCode: string }) {
+    const lookup = this.page.waitForResponse((r) => r.url().includes('/postcode-lookup'));
+    await this.byTestId('country').selectOption(address.country);
+    await this.byTestId('postal_code').fill(address.postalCode);
+    await this.byTestId('house_number').fill(address.houseNumber);
+    await lookup;
     const fields: Array<[string, string]> = [
       ['street', address.street],
       ['city', address.city],
       ['state', address.state],
-      ['country', address.country],
-      ['postal_code', address.postalCode],
     ];
     for (const [id, value] of fields) {
-      const field = this.byTestId(id);
-      if ((await field.count()) && !(await field.inputValue())) {
-        await field.fill(value);
-      }
+      await this.byTestId(id).fill(value);
     }
     await this.proceedFromAddress.click();
   }
@@ -63,6 +70,11 @@ export class CheckoutPage extends BasePage {
   /** Step 4: pay with the simplest method. */
   async payWith(method: string) {
     await this.paymentMethod.selectOption(method);
+    await this.finish.click();
+  }
+
+  /** After the payment is accepted the same button places the order. */
+  async confirmOrder() {
     await this.finish.click();
   }
 }
