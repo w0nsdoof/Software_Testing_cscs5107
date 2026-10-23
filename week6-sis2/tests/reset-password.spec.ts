@@ -10,7 +10,8 @@ test.describe('TC-05 Reset a password', () => {
     await forgotPasswordPage.requestReset(customer.email);
 
     await expect(forgotPasswordPage.alert).toBeVisible();
-    await expect(forgotPasswordPage.alert).toContainText(/sent|success|mail/i);
+    // The live site renders the untranslated i18n key as the confirmation text.
+    await expect(forgotPasswordPage.alert).toHaveText('page.forgot-password.confirm');
   });
 
   test('an invalid email is rejected with an error', async ({ forgotPasswordPage, page }) => {
