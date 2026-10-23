@@ -1,37 +1,31 @@
 import { test, expect } from '../fixtures';
 
-/**
- * The Toolshop has no built-in "compare" feature, so this test performs the
- * comparison itself: it opens two products, records name and price from the
- * UI, and asserts the stated relationships, including against the API.
- */
 test.describe('TC-04 Compare two products', () => {
-  test('two product pages show distinct names and prices consistent with the catalogue', async ({ api, productPage }) => {
+  test('the comparison page shows both products with their catalogue prices', async ({ api, productPage, comparisonPage, page }) => {
     const products = await api.inStockProducts(2);
     expect(products.length, 'need two in-stock products').toBeGreaterThanOrEqual(2);
     const [a, b] = products;
 
     await productPage.open(a.id);
     const first = await productPage.snapshot();
+    await productPage.addToCompare();
 
     await productPage.open(b.id);
     const second = await productPage.snapshot();
+    await productPage.addToCompare();
+    // the bar only appears once two products are selected
+    await expect(productPage.comparisonBar).toContainText('2 product(s) selected');
 
-    // the two pages describe two different products
+    // the product pages agree with the catalogue
     expect(first.name).not.toBe(second.name);
-    expect(first.name).toBe(a.name);
-    expect(second.name).toBe(b.name);
-
-    // the prices shown in the UI match the catalogue
+    expect([first.name, second.name]).toEqual([a.name, b.name]);
     expect(first.price).toBeCloseTo(a.price, 2);
     expect(second.price).toBeCloseTo(b.price, 2);
-    expect(first.price).toBeGreaterThan(0);
-    expect(second.price).toBeGreaterThan(0);
 
-    // the comparison the test states: the cheaper one is the one the catalogue says is cheaper
-    const cheaperInUi = first.price <= second.price ? first.name : second.name;
-    const cheaperInApi = a.price <= b.price ? a.name : b.name;
-    expect(cheaperInUi).toBe(cheaperInApi);
+    await productPage.openComparison();
+    await expect(page).toHaveURL(/\/comparison/);
+    await expect(comparisonPage.productNames).toHaveText([a.name, b.name]);
+    await expect(comparisonPage.prices).toHaveText([`$${a.price.toFixed(2)}`, `$${b.price.toFixed(2)}`]);
   });
 
   test('adding two different products gives a cart with two lines and the summed total', async ({ api, productPage, cartPage }) => {

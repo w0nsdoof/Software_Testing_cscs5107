@@ -12,6 +12,13 @@ export class ProductPage extends BasePage {
   private readonly addToCartButton = this.byTestId('add-to-cart');
   private readonly quantity = this.byTestId('quantity');
   private readonly increaseQuantity = this.byTestId('increase-quantity');
+  private readonly addToCompareButton = this.byTestId('add-to-compare');
+  private readonly compareLink = this.byTestId('compare-link');
+
+  /** Bar that appears once a product is selected for comparison. */
+  get comparisonBar(): Locator {
+    return this.byTestId('comparison-bar');
+  }
 
   /** Toast shown after adding to cart. */
   get addedToast(): Locator {
@@ -34,5 +41,13 @@ export class ProductPage extends BasePage {
 
   async addToCart() {
     await this.addToCartButton.click();
+  }
+
+  async addToCompare() {
+    await this.addToCompareButton.click();
+  }
+
+  async openComparison() {
+    await this.compareLink.click();
   }
 }
