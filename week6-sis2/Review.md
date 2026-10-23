@@ -32,9 +32,7 @@ Branch `ai-raw-draft-sis2` (commit `7c420e5`) holds the first draft exactly as g
 | # | Change | Reason |
 |---|--------|--------|
 | R1 | Deleted `pages/home.page.ts` and its fixture | Its only locator was `a.card`, a CSS class, which the brief forbids. No spec used it: products are opened by id from the API instead. |
-| R2 | Removed the GitHub Actions workflow and the `ci-results` publishing step | The first CI run (run 2 of the workflow) failed all 9 tests on a Cloudflare "Performing security verification" page. The site blocks datacenter IPs. Automating a click on a bot check is not acceptable, and the lecturer will run the suite from a laptop anyway, so cloud execution was abandoned. The failure screenshot is kept in `screenshots/` as evidence. |
-| R3 | `checkout.page.ts`: fill address fields only when empty | For the seeded customer the billing address is prefilled; for a fresh customer it is not. One method works for both. |
-| R4 | `tests/compare-products.spec.ts`: compare against the API, not only between the two pages | The Toolshop has no compare feature. Asserting "cheaper in UI = cheaper in API" turns a weak "two names differ" check into one that fails if either price is rendered wrong. |
+| R2 | Removed the GitHub Actions workflow and the `ci-results` publishing step (branch `ci-results` still exists on GitHub and can be deleted) | The first CI run (run 2 of the workflow) failed all 9 tests on a Cloudflare "Performing security verification" page. The site blocks datacenter IPs. Automating a click on a bot check is not acceptable, and the lecturer will run the suite from a laptop anyway, so cloud execution was abandoned. The failure screenshot is kept in `screenshots/` as evidence. |
 
 ## 4. Things the AI decided that the student should check
 
