@@ -1,0 +1,1 @@
+run=2 sha=7c420e54679bcc5b632f57c53f2ec859668b5981 outcome=failure url=https://github.com/w0nsdoof/Software_Testing_cscs5107/actions/runs/39959166953

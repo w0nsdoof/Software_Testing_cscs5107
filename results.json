@@ -1,0 +1,1123 @@
+{
+  "config": {
+    "configFile": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/playwright.config.ts",
+    "rootDir": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests",
+    "forbidOnly": true,
+    "fullyParallel": true,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 3
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list"
+      ],
+      [
+        "html"
+      ],
+      [
+        "json"
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {},
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "version": "1.49.1",
+    "workers": 3,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "buy-product.spec.ts",
+      "file": "buy-product.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TC-03 Buy a product",
+          "file": "buy-product.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "add to cart, cart shows the right item and quantity, checkout completes",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "status": "failed",
+                      "duration": 16669,
+                      "error": {
+                        "message": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n\n    at ProductPage.snapshot (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:26:35)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/buy-product.spec.ts:11:37",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                          "column": 35,
+                          "line": 26
+                        },
+                        "snippet": "   at ../pages/product.page.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36masync\u001b[39m snapshot()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[33mProductSnapshot\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m name \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtextContent())\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim() \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m priceText \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39munitPrice\u001b[33m.\u001b[39mtextContent()) \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[36mreturn\u001b[39m { name\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m \u001b[33mNumber\u001b[39m(priceText\u001b[33m.\u001b[39mreplace(\u001b[35m/[^0-9.]/g\u001b[39m\u001b[33m,\u001b[39m \u001b[32m''\u001b[39m)) }\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                            "column": 35,
+                            "line": 26
+                          },
+                          "message": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n\n\n   at ../pages/product.page.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36masync\u001b[39m snapshot()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[33mProductSnapshot\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m name \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtextContent())\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim() \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m priceText \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39munitPrice\u001b[33m.\u001b[39mtextContent()) \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[36mreturn\u001b[39m { name\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m \u001b[33mNumber\u001b[39m(priceText\u001b[33m.\u001b[39mreplace(\u001b[35m/[^0-9.]/g\u001b[39m\u001b[33m,\u001b[39m \u001b[32m''\u001b[39m)) }\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   }\u001b[0m\n    at ProductPage.snapshot (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:26:35)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/buy-product.spec.ts:11:37"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:12:11.485Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/buy-product-TC-03-Buy-a-pr-5dd78-quantity-checkout-completes-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                        "column": 35,
+                        "line": 26
+                      }
+                    },
+                    {
+                      "workerIndex": 5,
+                      "status": "failed",
+                      "duration": 16470,
+                      "error": {
+                        "message": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n\n    at ProductPage.snapshot (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:26:35)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/buy-product.spec.ts:11:37",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                          "column": 35,
+                          "line": 26
+                        },
+                        "snippet": "   at ../pages/product.page.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36masync\u001b[39m snapshot()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[33mProductSnapshot\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m name \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtextContent())\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim() \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m priceText \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39munitPrice\u001b[33m.\u001b[39mtextContent()) \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[36mreturn\u001b[39m { name\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m \u001b[33mNumber\u001b[39m(priceText\u001b[33m.\u001b[39mreplace(\u001b[35m/[^0-9.]/g\u001b[39m\u001b[33m,\u001b[39m \u001b[32m''\u001b[39m)) }\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                            "column": 35,
+                            "line": 26
+                          },
+                          "message": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n\n\n   at ../pages/product.page.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36masync\u001b[39m snapshot()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[33mProductSnapshot\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m name \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtextContent())\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim() \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m priceText \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39munitPrice\u001b[33m.\u001b[39mtextContent()) \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[36mreturn\u001b[39m { name\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m \u001b[33mNumber\u001b[39m(priceText\u001b[33m.\u001b[39mreplace(\u001b[35m/[^0-9.]/g\u001b[39m\u001b[33m,\u001b[39m \u001b[32m''\u001b[39m)) }\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   }\u001b[0m\n    at ProductPage.snapshot (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:26:35)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/buy-product.spec.ts:11:37"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:12:29.215Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/buy-product-TC-03-Buy-a-pr-5dd78-quantity-checkout-completes-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/buy-product-TC-03-Buy-a-pr-5dd78-quantity-checkout-completes-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                        "column": 35,
+                        "line": 26
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "2c995aafd4029bd0ebf3-72bc4b0081e96f689f55",
+              "file": "buy-product.spec.ts",
+              "line": 5,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "compare-products.spec.ts",
+      "file": "compare-products.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TC-04 Compare two products",
+          "file": "compare-products.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "two product pages show distinct names and prices consistent with the catalogue",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "status": "failed",
+                      "duration": 16262,
+                      "error": {
+                        "message": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n\n    at ProductPage.snapshot (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:26:35)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/compare-products.spec.ts:15:37",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                          "column": 35,
+                          "line": 26
+                        },
+                        "snippet": "   at ../pages/product.page.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36masync\u001b[39m snapshot()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[33mProductSnapshot\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m name \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtextContent())\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim() \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m priceText \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39munitPrice\u001b[33m.\u001b[39mtextContent()) \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[36mreturn\u001b[39m { name\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m \u001b[33mNumber\u001b[39m(priceText\u001b[33m.\u001b[39mreplace(\u001b[35m/[^0-9.]/g\u001b[39m\u001b[33m,\u001b[39m \u001b[32m''\u001b[39m)) }\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                            "column": 35,
+                            "line": 26
+                          },
+                          "message": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n\n\n   at ../pages/product.page.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36masync\u001b[39m snapshot()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[33mProductSnapshot\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m name \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtextContent())\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim() \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m priceText \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39munitPrice\u001b[33m.\u001b[39mtextContent()) \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[36mreturn\u001b[39m { name\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m \u001b[33mNumber\u001b[39m(priceText\u001b[33m.\u001b[39mreplace(\u001b[35m/[^0-9.]/g\u001b[39m\u001b[33m,\u001b[39m \u001b[32m''\u001b[39m)) }\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   }\u001b[0m\n    at ProductPage.snapshot (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:26:35)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/compare-products.spec.ts:15:37"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:12:11.441Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/compare-products-TC-04-Com-b4003-nsistent-with-the-catalogue-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                        "column": 35,
+                        "line": 26
+                      }
+                    },
+                    {
+                      "workerIndex": 3,
+                      "status": "failed",
+                      "duration": 16210,
+                      "error": {
+                        "message": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n\n    at ProductPage.snapshot (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:26:35)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/compare-products.spec.ts:15:37",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                          "column": 35,
+                          "line": 26
+                        },
+                        "snippet": "   at ../pages/product.page.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36masync\u001b[39m snapshot()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[33mProductSnapshot\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m name \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtextContent())\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim() \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m priceText \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39munitPrice\u001b[33m.\u001b[39mtextContent()) \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[36mreturn\u001b[39m { name\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m \u001b[33mNumber\u001b[39m(priceText\u001b[33m.\u001b[39mreplace(\u001b[35m/[^0-9.]/g\u001b[39m\u001b[33m,\u001b[39m \u001b[32m''\u001b[39m)) }\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                            "column": 35,
+                            "line": 26
+                          },
+                          "message": "TimeoutError: locator.textContent: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('product-name')\u001b[22m\n\n\n   at ../pages/product.page.ts:26\n\n\u001b[0m \u001b[90m 24 |\u001b[39m\n \u001b[90m 25 |\u001b[39m   \u001b[36masync\u001b[39m snapshot()\u001b[33m:\u001b[39m \u001b[33mPromise\u001b[39m\u001b[33m<\u001b[39m\u001b[33mProductSnapshot\u001b[39m\u001b[33m>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 26 |\u001b[39m     \u001b[36mconst\u001b[39m name \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mname\u001b[33m.\u001b[39mtextContent())\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtrim() \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mconst\u001b[39m priceText \u001b[33m=\u001b[39m (\u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39munitPrice\u001b[33m.\u001b[39mtextContent()) \u001b[33m?\u001b[39m\u001b[33m?\u001b[39m \u001b[32m''\u001b[39m\u001b[33m;\u001b[39m\n \u001b[90m 28 |\u001b[39m     \u001b[36mreturn\u001b[39m { name\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m \u001b[33mNumber\u001b[39m(priceText\u001b[33m.\u001b[39mreplace(\u001b[35m/[^0-9.]/g\u001b[39m\u001b[33m,\u001b[39m \u001b[32m''\u001b[39m)) }\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m   }\u001b[0m\n    at ProductPage.snapshot (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:26:35)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/compare-products.spec.ts:15:37"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:12:28.592Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/compare-products-TC-04-Com-b4003-nsistent-with-the-catalogue-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/compare-products-TC-04-Com-b4003-nsistent-with-the-catalogue-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                        "column": 35,
+                        "line": 26
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "45048e963b8f17801e4d-b4f94e257b49e0506ad0",
+              "file": "compare-products.spec.ts",
+              "line": 9,
+              "column": 7
+            },
+            {
+              "title": "adding two different products gives a cart with two lines and the summed total",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "status": "failed",
+                      "duration": 16273,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('add-to-cart')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('add-to-cart')\u001b[22m\n\n    at ProductPage.addToCart (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:36:32)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/compare-products.spec.ts:41:23",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                          "column": 32,
+                          "line": 36
+                        },
+                        "snippet": "   at ../pages/product.page.ts:36\n\n\u001b[0m \u001b[90m 34 |\u001b[39m\n \u001b[90m 35 |\u001b[39m   \u001b[36masync\u001b[39m addToCart() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39maddToCartButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 37 |\u001b[39m   }\n \u001b[90m 38 |\u001b[39m }\n \u001b[90m 39 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                            "column": 32,
+                            "line": 36
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('add-to-cart')\u001b[22m\n\n\n   at ../pages/product.page.ts:36\n\n\u001b[0m \u001b[90m 34 |\u001b[39m\n \u001b[90m 35 |\u001b[39m   \u001b[36masync\u001b[39m addToCart() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39maddToCartButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 37 |\u001b[39m   }\n \u001b[90m 38 |\u001b[39m }\n \u001b[90m 39 |\u001b[39m\u001b[0m\n    at ProductPage.addToCart (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:36:32)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/compare-products.spec.ts:41:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:12:11.475Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/compare-products-TC-04-Com-79845--lines-and-the-summed-total-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                        "column": 32,
+                        "line": 36
+                      }
+                    },
+                    {
+                      "workerIndex": 4,
+                      "status": "failed",
+                      "duration": 16214,
+                      "error": {
+                        "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('add-to-cart')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('add-to-cart')\u001b[22m\n\n    at ProductPage.addToCart (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:36:32)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/compare-products.spec.ts:41:23",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                          "column": 32,
+                          "line": 36
+                        },
+                        "snippet": "   at ../pages/product.page.ts:36\n\n\u001b[0m \u001b[90m 34 |\u001b[39m\n \u001b[90m 35 |\u001b[39m   \u001b[36masync\u001b[39m addToCart() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39maddToCartButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 37 |\u001b[39m   }\n \u001b[90m 38 |\u001b[39m }\n \u001b[90m 39 |\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                            "column": 32,
+                            "line": 36
+                          },
+                          "message": "TimeoutError: locator.click: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('add-to-cart')\u001b[22m\n\n\n   at ../pages/product.page.ts:36\n\n\u001b[0m \u001b[90m 34 |\u001b[39m\n \u001b[90m 35 |\u001b[39m   \u001b[36masync\u001b[39m addToCart() {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 36 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39maddToCartButton\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 37 |\u001b[39m   }\n \u001b[90m 38 |\u001b[39m }\n \u001b[90m 39 |\u001b[39m\u001b[0m\n    at ProductPage.addToCart (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts:36:32)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/compare-products.spec.ts:41:23"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:12:28.693Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/compare-products-TC-04-Com-79845--lines-and-the-summed-total-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/compare-products-TC-04-Com-79845--lines-and-the-summed-total-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/product.page.ts",
+                        "column": 32,
+                        "line": 36
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "45048e963b8f17801e4d-2c116660ed31ea154e8f",
+              "file": "compare-products.spec.ts",
+              "line": 37,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "login.spec.ts",
+      "file": "login.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TC-02 Log in",
+          "file": "login.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "valid credentials open the account page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "status": "failed",
+                      "duration": 15548,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n    at LoginPage.signIn (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts:19:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/login.spec.ts:7:21",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                          "column": 22,
+                          "line": 19
+                        },
+                        "snippet": "   at ../pages/login.page.ts:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36masync\u001b[39m signIn(email\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m password\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpassword\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                            "column": 22,
+                            "line": 19
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n\n   at ../pages/login.page.ts:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36masync\u001b[39m signIn(email\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m password\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpassword\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m   }\u001b[0m\n    at LoginPage.signIn (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts:19:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/login.spec.ts:7:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:12:45.996Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/login-TC-02-Log-in-valid-credentials-open-the-account-page-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                        "column": 22,
+                        "line": 19
+                      }
+                    },
+                    {
+                      "workerIndex": 9,
+                      "status": "failed",
+                      "duration": 15673,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n    at LoginPage.signIn (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts:19:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/login.spec.ts:7:21",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                          "column": 22,
+                          "line": 19
+                        },
+                        "snippet": "   at ../pages/login.page.ts:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36masync\u001b[39m signIn(email\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m password\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpassword\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                            "column": 22,
+                            "line": 19
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n\n   at ../pages/login.page.ts:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36masync\u001b[39m signIn(email\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m password\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpassword\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m   }\u001b[0m\n    at LoginPage.signIn (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts:19:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/login.spec.ts:7:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:13:02.327Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/login-TC-02-Log-in-valid-credentials-open-the-account-page-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/login-TC-02-Log-in-valid-credentials-open-the-account-page-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                        "column": 22,
+                        "line": 19
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "41d3fd2474a19feb00a1-6f47520483a52ff1ce6a",
+              "file": "login.spec.ts",
+              "line": 5,
+              "column": 7
+            },
+            {
+              "title": "a wrong password shows an error and stays on the login page",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "status": "failed",
+                      "duration": 15483,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n    at LoginPage.signIn (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts:19:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/login.spec.ts:16:21",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                          "column": 22,
+                          "line": 19
+                        },
+                        "snippet": "   at ../pages/login.page.ts:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36masync\u001b[39m signIn(email\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m password\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpassword\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                            "column": 22,
+                            "line": 19
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n\n   at ../pages/login.page.ts:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36masync\u001b[39m signIn(email\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m password\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpassword\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m   }\u001b[0m\n    at LoginPage.signIn (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts:19:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/login.spec.ts:16:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:12:46.044Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/login-TC-02-Log-in-a-wrong-4d433-and-stays-on-the-login-page-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                        "column": 22,
+                        "line": 19
+                      }
+                    },
+                    {
+                      "workerIndex": 10,
+                      "status": "failed",
+                      "duration": 15938,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n    at LoginPage.signIn (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts:19:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/login.spec.ts:16:21",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                          "column": 22,
+                          "line": 19
+                        },
+                        "snippet": "   at ../pages/login.page.ts:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36masync\u001b[39m signIn(email\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m password\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpassword\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m   }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                            "column": 22,
+                            "line": 19
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n\n   at ../pages/login.page.ts:19\n\n\u001b[0m \u001b[90m 17 |\u001b[39m\n \u001b[90m 18 |\u001b[39m   \u001b[36masync\u001b[39m signIn(email\u001b[33m:\u001b[39m string\u001b[33m,\u001b[39m password\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 19 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 20 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpassword\u001b[33m.\u001b[39mfill(password)\u001b[33m;\u001b[39m\n \u001b[90m 21 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 22 |\u001b[39m   }\u001b[0m\n    at LoginPage.signIn (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts:19:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/login.spec.ts:16:21"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:13:02.356Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/login-TC-02-Log-in-a-wrong-4d433-and-stays-on-the-login-page-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/login-TC-02-Log-in-a-wrong-4d433-and-stays-on-the-login-page-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/login.page.ts",
+                        "column": 22,
+                        "line": 19
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "41d3fd2474a19feb00a1-38064622f0c87a434041",
+              "file": "login.spec.ts",
+              "line": 14,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "register.spec.ts",
+      "file": "register.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TC-01 Register a new customer",
+          "file": "register.spec.ts",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "a new customer can register and then sign in with the same credentials",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 8,
+                      "status": "failed",
+                      "duration": 15637,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n\n    at RegisterPage.register (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts:28:26)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/register.spec.ts:9:24",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                          "column": 26,
+                          "line": 28
+                        },
+                        "snippet": "   at ../pages/register.page.ts:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36masync\u001b[39m register(user\u001b[33m:\u001b[39m \u001b[33mUser\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirstName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mlastName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mlastName)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdob\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mdob)\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstreet\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mstreet)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                            "column": 26,
+                            "line": 28
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n\n\n   at ../pages/register.page.ts:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36masync\u001b[39m register(user\u001b[33m:\u001b[39m \u001b[33mUser\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirstName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mlastName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mlastName)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdob\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mdob)\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstreet\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mstreet)\u001b[33m;\u001b[39m\u001b[0m\n    at RegisterPage.register (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts:28:26)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/register.spec.ts:9:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:12:47.114Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/register-TC-01-Register-a--b64c6-n-with-the-same-credentials-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                        "column": 26,
+                        "line": 28
+                      }
+                    },
+                    {
+                      "workerIndex": 11,
+                      "status": "failed",
+                      "duration": 16042,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n\n    at RegisterPage.register (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts:28:26)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/register.spec.ts:9:24",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                          "column": 26,
+                          "line": 28
+                        },
+                        "snippet": "   at ../pages/register.page.ts:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36masync\u001b[39m register(user\u001b[33m:\u001b[39m \u001b[33mUser\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirstName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mlastName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mlastName)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdob\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mdob)\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstreet\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mstreet)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                            "column": 26,
+                            "line": 28
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n\n\n   at ../pages/register.page.ts:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36masync\u001b[39m register(user\u001b[33m:\u001b[39m \u001b[33mUser\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirstName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mlastName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mlastName)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdob\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mdob)\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstreet\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mstreet)\u001b[33m;\u001b[39m\u001b[0m\n    at RegisterPage.register (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts:28:26)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/register.spec.ts:9:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:13:04.256Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/register-TC-01-Register-a--b64c6-n-with-the-same-credentials-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/register-TC-01-Register-a--b64c6-n-with-the-same-credentials-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                        "column": 26,
+                        "line": 28
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "ab6fb19b790d2390d751-65fe8bf05b7b6d4c2683",
+              "file": "register.spec.ts",
+              "line": 5,
+              "column": 7
+            },
+            {
+              "title": "registering with an email that already exists is rejected",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 12,
+                      "status": "failed",
+                      "duration": 15557,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n\n    at RegisterPage.register (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts:28:26)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/register.spec.ts:25:24",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                          "column": 26,
+                          "line": 28
+                        },
+                        "snippet": "   at ../pages/register.page.ts:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36masync\u001b[39m register(user\u001b[33m:\u001b[39m \u001b[33mUser\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirstName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mlastName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mlastName)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdob\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mdob)\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstreet\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mstreet)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                            "column": 26,
+                            "line": 28
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n\n\n   at ../pages/register.page.ts:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36masync\u001b[39m register(user\u001b[33m:\u001b[39m \u001b[33mUser\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirstName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mlastName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mlastName)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdob\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mdob)\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstreet\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mstreet)\u001b[33m;\u001b[39m\u001b[0m\n    at RegisterPage.register (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts:28:26)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/register.spec.ts:25:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:13:19.004Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/register-TC-01-Register-a--cc24b--already-exists-is-rejected-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                        "column": 26,
+                        "line": 28
+                      }
+                    },
+                    {
+                      "workerIndex": 15,
+                      "status": "failed",
+                      "duration": 15642,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n\n    at RegisterPage.register (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts:28:26)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/register.spec.ts:25:24",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                          "column": 26,
+                          "line": 28
+                        },
+                        "snippet": "   at ../pages/register.page.ts:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36masync\u001b[39m register(user\u001b[33m:\u001b[39m \u001b[33mUser\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirstName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mlastName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mlastName)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdob\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mdob)\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstreet\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mstreet)\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                            "column": 26,
+                            "line": 28
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('first-name')\u001b[22m\n\n\n   at ../pages/register.page.ts:28\n\n\u001b[0m \u001b[90m 26 |\u001b[39m\n \u001b[90m 27 |\u001b[39m   \u001b[36masync\u001b[39m register(user\u001b[33m:\u001b[39m \u001b[33mUser\u001b[39m) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 28 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mfirstName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mfirstName)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                          \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 29 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mlastName\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mlastName)\u001b[33m;\u001b[39m\n \u001b[90m 30 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mdob\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mdob)\u001b[33m;\u001b[39m\n \u001b[90m 31 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mstreet\u001b[33m.\u001b[39mfill(user\u001b[33m.\u001b[39mstreet)\u001b[33m;\u001b[39m\u001b[0m\n    at RegisterPage.register (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts:28:26)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/register.spec.ts:25:24"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:13:35.332Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/register-TC-01-Register-a--cc24b--already-exists-is-rejected-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/register-TC-01-Register-a--cc24b--already-exists-is-rejected-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/register.page.ts",
+                        "column": 26,
+                        "line": 28
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "ab6fb19b790d2390d751-7ecd0c9b4047076170f3",
+              "file": "register.spec.ts",
+              "line": 21,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "reset-password.spec.ts",
+      "file": "reset-password.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "TC-05 Reset a password",
+          "file": "reset-password.spec.ts",
+          "line": 8,
+          "column": 6,
+          "specs": [
+            {
+              "title": "a known email gets a confirmation message",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 13,
+                      "status": "failed",
+                      "duration": 15468,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n    at ForgotPasswordPage.requestReset (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts:22:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/reset-password.spec.ts:11:30",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                          "column": 22,
+                          "line": 22
+                        },
+                        "snippet": "   at ../pages/forgot-password.page.ts:22\n\n\u001b[0m \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36masync\u001b[39m requestReset(email\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                            "column": 22,
+                            "line": 22
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n\n   at ../pages/forgot-password.page.ts:22\n\n\u001b[0m \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36masync\u001b[39m requestReset(email\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m }\u001b[0m\n    at ForgotPasswordPage.requestReset (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts:22:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/reset-password.spec.ts:11:30"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:13:19.311Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/reset-password-TC-05-Reset-6482d-gets-a-confirmation-message-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                        "column": 22,
+                        "line": 22
+                      }
+                    },
+                    {
+                      "workerIndex": 16,
+                      "status": "failed",
+                      "duration": 15786,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n    at ForgotPasswordPage.requestReset (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts:22:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/reset-password.spec.ts:11:30",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                          "column": 22,
+                          "line": 22
+                        },
+                        "snippet": "   at ../pages/forgot-password.page.ts:22\n\n\u001b[0m \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36masync\u001b[39m requestReset(email\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                            "column": 22,
+                            "line": 22
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n\n   at ../pages/forgot-password.page.ts:22\n\n\u001b[0m \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36masync\u001b[39m requestReset(email\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m }\u001b[0m\n    at ForgotPasswordPage.requestReset (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts:22:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/reset-password.spec.ts:11:30"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:13:35.644Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/reset-password-TC-05-Reset-6482d-gets-a-confirmation-message-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/reset-password-TC-05-Reset-6482d-gets-a-confirmation-message-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                        "column": 22,
+                        "line": 22
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "193bb8f07ddb614d27ad-577d31b162a430fc5941",
+              "file": "reset-password.spec.ts",
+              "line": 9,
+              "column": 7
+            },
+            {
+              "title": "an invalid email is rejected with an error",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "status": "failed",
+                      "duration": 15797,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n    at ForgotPasswordPage.requestReset (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts:22:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/reset-password.spec.ts:19:30",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                          "column": 22,
+                          "line": 22
+                        },
+                        "snippet": "   at ../pages/forgot-password.page.ts:22\n\n\u001b[0m \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36masync\u001b[39m requestReset(email\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                            "column": 22,
+                            "line": 22
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n\n   at ../pages/forgot-password.page.ts:22\n\n\u001b[0m \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36masync\u001b[39m requestReset(email\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m }\u001b[0m\n    at ForgotPasswordPage.requestReset (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts:22:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/reset-password.spec.ts:19:30"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-10-23T13:13:21.775Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/reset-password-TC-05-Reset-73af5-l-is-rejected-with-an-error-chromium/test-failed-1.png"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                        "column": 22,
+                        "line": 22
+                      }
+                    },
+                    {
+                      "workerIndex": 17,
+                      "status": "failed",
+                      "duration": 16039,
+                      "error": {
+                        "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n",
+                        "stack": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n    at ForgotPasswordPage.requestReset (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts:22:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/reset-password.spec.ts:19:30",
+                        "location": {
+                          "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                          "column": 22,
+                          "line": 22
+                        },
+                        "snippet": "   at ../pages/forgot-password.page.ts:22\n\n\u001b[0m \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36masync\u001b[39m requestReset(email\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m }\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                            "column": 22,
+                            "line": 22
+                          },
+                          "message": "TimeoutError: locator.fill: Timeout 15000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByTestId('email')\u001b[22m\n\n\n   at ../pages/forgot-password.page.ts:22\n\n\u001b[0m \u001b[90m 20 |\u001b[39m\n \u001b[90m 21 |\u001b[39m   \u001b[36masync\u001b[39m requestReset(email\u001b[33m:\u001b[39m string) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 22 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39memail\u001b[33m.\u001b[39mfill(email)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 23 |\u001b[39m     \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39msubmit\u001b[33m.\u001b[39mclick()\u001b[33m;\u001b[39m\n \u001b[90m 24 |\u001b[39m   }\n \u001b[90m 25 |\u001b[39m }\u001b[0m\n    at ForgotPasswordPage.requestReset (/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts:22:22)\n    at /home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/tests/reset-password.spec.ts:19:30"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2026-10-23T13:13:39.211Z",
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/reset-password-TC-05-Reset-73af5-l-is-rejected-with-an-error-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/test-results/reset-password-TC-05-Reset-73af5-l-is-rejected-with-an-error-chromium-retry1/trace.zip"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/home/runner/work/Software_Testing_cscs5107/Software_Testing_cscs5107/week6-sis2/pages/forgot-password.page.ts",
+                        "column": 22,
+                        "line": 22
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "193bb8f07ddb614d27ad-f56ab7b940bc5803cbdf",
+              "file": "reset-password.spec.ts",
+              "line": 17,
+              "column": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-23T13:12:10.468Z",
+    "duration": 105085.819,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 9,
+    "flaky": 0
+  }
+}
