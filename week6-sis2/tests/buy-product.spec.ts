@@ -1,8 +1,7 @@
 import { test, expect } from '../fixtures';
-import { existingCustomer } from '../data/user.factory';
 
 test.describe('TC-03 Buy a product', () => {
-  test('add to cart, cart shows the right item and quantity, checkout completes', async ({ api, productPage, cartPage, checkoutPage, page }) => {
+  test('add to cart, cart shows the right item and quantity, checkout completes', async ({ api, customer, productPage, cartPage, checkoutPage, page }) => {
     const [product] = await api.inStockProducts(1);
     expect(product, 'the catalogue should have at least one in-stock product').toBeTruthy();
 
@@ -23,7 +22,7 @@ test.describe('TC-03 Buy a product', () => {
 
     // checkout: sign in, confirm address, pay
     await checkoutPage.continueFromCart();
-    await checkoutPage.signInIfNeeded(existingCustomer.email, existingCustomer.password);
+    await checkoutPage.signInIfNeeded(customer.email, customer.password);
     await checkoutPage.confirmAddress({ street: 'Tole bi 59', city: 'Almaty', state: 'Almaty', country: 'Kazakhstan', postalCode: '050000' });
     await checkoutPage.payWith('cash-on-delivery');
 

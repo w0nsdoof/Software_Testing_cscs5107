@@ -15,14 +15,6 @@ export interface User {
   password: string;
 }
 
-/** A customer that already exists in the Toolshop seed data. Used for login and password reset. */
-export const existingCustomer = {
-  email: 'customer@practicesoftwaretesting.com',
-  password: 'welcome01',
-  firstName: 'Jane',
-  lastName: 'Doe',
-};
-
 /** A fresh customer for every run. The suffix keeps parallel runs and repeated runs from colliding. */
 export function newUser(overrides: Partial<User> = {}): User {
   const suffix = `${Date.now().toString(36)}${randomUUID().slice(0, 6)}`;
