@@ -34,3 +34,28 @@ Raw output (summary): the AI proposed GitHub Actions as the execution environmen
 ## Prompts to the AI that were not issued
 
 No prompt asked the AI to generate the tests from a tutorial or to copy `data-test` names from one. The attribute names in `pages/` come from the AI's knowledge of the Toolshop and are flagged in `Review.md` as the first thing to verify against the live site.
+
+## P3: local run
+
+Tool: Claude Code (Anthropic CLI) on the student's laptop (Ubuntu 26.04), model Claude Opus 5.5 (`claude-opus-5-5`). Date: 2026-10-23. Unlike P1 and P2, this session could reach the live site and run the suite.
+
+```text
+Clone https://github.com/w0nsdoof/Software_Testing_cscs5107 and work in week6-sis2/. This is SIS 2 for CSCS5107 (Software Testing, KBTU): a Playwright TypeScript suite for https://practicesoftwaretesting.com (the Toolshop). The suite and docs were drafted by an AI session without access to the live site; your job is to make it run green locally, then record what you changed. Deadline tonight 23:59.
+
+Start by reading README.md, Description.md and Review.md (sections 4 and 5 list the unverified decisions and the empty verification log).
+
+Steps:
+1. cd week6-sis2 && npm ci && npx playwright install chromium
+2. npm run discover  -> writes ci-out/discovery.md with the real data-test attribute names, error texts, checkout steps and payment-method values on the live site. Read it.
+3. npx playwright test. For every failure, fix the cause in pages/ or data/ (attribute names, select values, expected texts) or, if the live behaviour differs from the assumption, adjust the assertion to the real observable behaviour. Do not weaken assertions to make tests pass.
+4. Repeat until all 9 tests pass. Then run twice more: npx playwright test --workers=4 and npx playwright test --repeat-each=2, to confirm order and parallel independence.
+5. Run the suite against the deliberately broken build: change baseURL to https://with-bugs.practicesoftwaretesting.com for one run and confirm at least some tests go red (proves the assertions assert). Note which failed.
+6. Fill Review.md: section 3 (add every change you made, with the reason), section 5 (verification log: date, machine/OS, run results, each failure and its fix), section 6 (the three checks). Fill screenshots/README.md rows for the files you add, and save the final `npx playwright test` summary and HTML report screenshot into screenshots/ as 03-local-run-*.png.
+7. Append to Prompt.md a section "P3: local run" with this prompt verbatim and the tool you are (model name).
+
+Rules the grader checks, keep them intact: no locator in any file under tests/ (only page-object calls), no waitForTimeout anywhere, no CSS-class or positional-XPath locators (getByTestId / getByRole / getByLabel only; tag selectors like tbody tr are tolerated), at least one fixture used, unique data per run (data/user.factory.ts), tests independent.
+
+Commit in small steps with clear messages and push to main. Finish by printing: the final test summary, the list of files you changed, and anything still unverified.
+```
+
+Raw output (summary): discovery confirmed most attribute names and showed the seeded customer account is locked on the shared site. Six of nine tests failed on the first run. The fixes, with reasons, are R3 to R9 in `Review.md`, and the runs are in its section 5. The with-bugs run went fully red but only because that build is an older app (hash routes, different API), so it is recorded as not valid evidence. The broken-expected-value check was used instead.

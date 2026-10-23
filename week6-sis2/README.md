@@ -42,7 +42,7 @@ Nine tests in five files. Every test creates the data it needs: registration use
 tests/        one spec per test case; no locators here
 pages/        one page object per screen; business actions, not element wrappers
 fixtures/     page objects and an API helper handed to every test
-data/         user factory (unique email per run) and the seeded customer
+data/         user factory (unique email per run)
 tools/        discover.mjs: lists the live data-test attributes
 screenshots/  evidence for the SIS 2 submission
 playwright.config.ts
@@ -61,4 +61,4 @@ Rules the suite follows: no `waitForTimeout`, no CSS classes and no positional X
 
 ## Known dependency on the live site
 
-The `data-test` attribute names in `pages/` were written from knowledge of the Toolshop and must be confirmed against the live build before the deadline run (`npm run discover` prints them). See `Review.md` for the verification log.
+The `data-test` attribute names in `pages/` were checked against the live build on 2026-10-23 (`npm run discover` prints them). See `Review.md` for the changes and the verification log.
