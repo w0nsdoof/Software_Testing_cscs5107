@@ -19,10 +19,11 @@ Automate the five end-to-end test cases from the Week 6 brief against the Toolsh
 | TC-02a | Log in, valid | `/auth/login`, a customer registered through the API for this test, submit | URL `/account`, page title "My account", menu shows the customer's name |
 | TC-02b | Log in, invalid | Fresh customer's email, wrong password | Error "Invalid email or password", still on `/auth/login`, no user menu |
 | TC-03 | Buy a product | Pick an in-stock product via API, open its page, add to cart, open cart, proceed through sign-in, address and payment (cash on delivery), confirm | Badge "1"; one cart line with the right name, quantity 1, price and total; "Payment was successful", then "Thanks for your order" |
-| TC-04a | Compare two products | Open two in-stock products, capture name and price from the UI | Names differ and match the API; UI prices match API prices; the cheaper product is the same in UI and API |
+| TC-04a | Compare two products | Open two in-stock products, click "Compare" on each, then "Compare Now" | Bar shows "2 product(s) selected"; `/comparison` lists both names in the order added, with the API prices |
 | TC-04b | Two products in one cart | Add both, open cart | Badge "2", two lines, both names present, total = sum of prices |
-| TC-05a | Reset password, known email | `/auth/forgot-password`, fresh customer's email, submit | A confirmation alert appears with the text the site shows (`page.forgot-password.confirm`) |
-| TC-05b | Reset password, invalid email | `not-an-email`, submit | Validation error, still on the forgot-password page |
+| TC-05a | Reset password, known email | `/auth/forgot-password`, fresh customer's email, submit; then sign in with the old password | A confirmation alert appears with the text the site shows (`page.forgot-password.confirm`); the old password gets "Invalid email or password" |
+| TC-05b | Reset password, unregistered email | A well-formed email that has no account, submit | Alert "The selected email is invalid.", still on the forgot-password page |
+| TC-05c | Reset password, malformed email | `not-an-email`, submit | Validation error, still on the forgot-password page |
 
 ## Test data
 

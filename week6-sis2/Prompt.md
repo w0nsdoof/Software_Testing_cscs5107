@@ -59,3 +59,21 @@ Commit in small steps with clear messages and push to main. Finish by printing: 
 ```
 
 Raw output (summary): discovery confirmed most attribute names and showed the seeded customer account is locked on the shared site. Six of nine tests failed on the first run. The fixes, with reasons, are R3 to R9 in `Review.md`, and the runs are in its section 5. The with-bugs run went fully red but only because that build is an older app (hash routes, different API), so it is recorded as not valid evidence. The broken-expected-value check was used instead.
+
+## P4: compare with other students' repositories
+
+Tool: Claude Code on the student's laptop, model Claude Opus 5.5 (`claude-opus-5-5`). Date: 2026-10-23.
+
+*Pasted: a list of eight public GitHub repositories from the course, found by searching GitHub for the course code and "KBTU software testing".*
+
+```text
+check if those relevant users and can help us to shape sis2 in more correct way. if needed copy in tmp and explore relevant ones
+```
+
+Raw output (summary): cloned the repositories. Three had a SIS 2 suite. Two of them test the Toolshop's comparison page (`add-to-compare`, `compare-link`, `/comparison`), which our TC-04 said did not exist, and our own `ci-out/discovery.md` already listed those buttons. One also checks that the old password stops working after a reset, and covers an unregistered email. The AI proposed rewriting TC-04 and strengthening TC-05.
+
+```text
+both, show plan and execute it and also is our sis2 ready to be served and doesnt have AI looks of i
+```
+
+Raw output (summary): probed the live site to confirm the comparison flow and the reset behaviour, made the changes R10 and R11 in `Review.md`, ran the suite (runs 12 to 14) and checked the README, Description, Prompt and Review files for AI writing patterns. No test code was copied from the other repositories; they were used to find what our suite had missed.

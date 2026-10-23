@@ -31,10 +31,10 @@ Node 20 or newer. No environment variables are needed; the base URL is in `playw
 | `tests/register.spec.ts` | TC-01 Register a new customer | A unique account is created, the user lands on the login page, and the same credentials then open the account page. A second test checks that an existing email is rejected. |
 | `tests/login.spec.ts` | TC-02 Log in | Valid credentials reach `/account` with the customer's name in the menu; a wrong password shows the error, stays on the login page and does not sign in. |
 | `tests/buy-product.spec.ts` | TC-03 Buy a product | Add to cart, badge shows 1, cart shows the right item, quantity and price, four-step checkout completes with a payment success message. |
-| `tests/compare-products.spec.ts` | TC-04 Compare two products | Opens two products, captures name and price, asserts they are distinct and match the catalogue API, and that the cheaper one in the UI is the cheaper one in the API. A second test puts both in the cart and checks the summed total. |
-| `tests/reset-password.spec.ts` | TC-05 Reset a password | A known email gets a confirmation; an invalid email gets a validation error and stays on the page. |
+| `tests/compare-products.spec.ts` | TC-04 Compare two products | Adds two in-stock products to the comparison from their product pages, opens `/comparison` and checks that the table lists both names with their catalogue prices. A second test puts both in the cart and checks the summed total. |
+| `tests/reset-password.spec.ts` | TC-05 Reset a password | A known email gets a confirmation and the old password no longer signs in. An unregistered email and a malformed email are both rejected, and the user stays on the page. |
 
-Nine tests in five files. Every test creates the data it needs: registration uses a fresh email per run (`data/user.factory.ts`), the product tests pick in-stock products through the API instead of hard-coding one, and every test starts in its own browser context (empty cart, not signed in).
+Ten tests in five files. Every test creates the data it needs: registration uses a fresh email per run (`data/user.factory.ts`), the product tests pick in-stock products through the API instead of hard-coding one, and every test starts in its own browser context (empty cart, not signed in).
 
 ## Structure
 
@@ -54,8 +54,7 @@ Rules the suite follows: no `waitForTimeout`, no CSS classes and no positional X
 
 ## What was not automated, and why
 
-- The reset e-mail itself. The hosted Toolshop does not expose the mailbox, so TC-05 is scoped to the UI outcome (confirmation or validation error), as the brief allows.
-- Product comparison as a feature. The Toolshop has no compare page, so TC-04 performs the comparison in the test (two product pages, name and price, assertions stated in the test) rather than exercising a feature that does not exist.
+- The reset e-mail itself. The hosted Toolshop does not expose the mailbox, so TC-05 checks what the site shows: the confirmation, and that the old password stops working.
 - The exact catalogue count or a fixed product. The site is shared and its stock changes, so tests ask the API for in-stock products at run time instead of asserting "there are 9 products".
 - Payment by card. Cash on delivery is the simplest method that completes an order; card validation is a separate feature with its own test cases.
 

@@ -40,6 +40,9 @@ Branch `ai-raw-draft-sis2` (commit `7c420e5`) holds the first draft exactly as g
 | R7 | After "Payment was successful", click the same button again (`confirmOrder()`, label "Confirm") before asserting the order confirmation (`040689a`) | On the live site the first click only checks the payment; the second places the order and shows "Thanks for your order! Your invoice number is INV-…". |
 | R8 | Order confirmation locator narrowed from `/thanks for your order\|order was placed\|invoice/i` + `.first()` to `/thanks for your order/i` (`040689a`) | `.first()` picked the hidden "My invoices" link in the signed-in user menu, so `toBeVisible()` could never pass. |
 | R9 | `tools/discover.mjs`: nine `waitForTimeout` calls replaced by waits for the element each step produces (`01ab2c6`) | The rule is "no `waitForTimeout` anywhere", and the script is in the repository. Re-ran `npm run discover` afterwards: same sections and data. |
+| R10 | TC-04 rewritten to use the Toolshop's own comparison: "Compare" on two product pages, "Compare Now", then assertions on the `/comparison` table. New `ComparisonPage`; `addToCompare()` and `openComparison()` on `ProductPage` | The draft said the Toolshop had no compare feature and compared two product pages inside the test. That was wrong: `ci-out/discovery.md` already listed `add-to-compare` on the product page and `compare-btn` on the catalogue cards, and I missed it. I noticed when reading other students' public SIS 2 repositories, which test the comparison page. The bar only appears once two products are selected, so the test waits for "2 product(s) selected" before opening the page. |
+| R11 | TC-05: the known-email test now also signs in with the old password and expects "Invalid email or password"; new test for an unregistered but well-formed email | The confirmation alert is an untranslated i18n key (R5), so on its own it proves little. A password that stops working shows the reset happened. An unregistered email is a different partition from a malformed one: the server rejects it ("The selected email is invalid."), while `not-an-email` fails on the form. |
+| R12 | Checkout address step: the test no longer types an address. It waits for both `/postcode-lookup` answers and checks that the city changed from the profile value, then proceeds | R6 got the cause backwards. TC-03 failed 4 of 8 runs again, and the trace showed the same 422. Logging the invoice requests showed that the server accepts only the made-up address from the lookup ("Lake Daniela, California", 201) and rejects the real Almaty address (422). R6 passed only in the runs where a second, late lookup overwrote our values. Postcode and house number each send their own lookup, and the profile prefill triggers both, so the step waits for two. The invoice address the site accepts is itself a defect worth reporting. |
 
 Outcome of the section 4 decisions on the live site: D1 all names correct except the missing `house_number` (R3); D2 `KZ` is the option value and `Kazakhstan` its label, both valid; D3 `cash-on-delivery` is correct; D4 "already exists" and "Invalid email or password" correct, reset text wrong (R5); D5 the cart table has no row-level `data-test`, `tbody tr` kept.
 
@@ -70,6 +73,13 @@ Local runs on 2026-10-23, Ubuntu 26.04.1 LTS (12 cores), Node 24.18.0, Playwrigh
 | 9 | 2026-10-23 | `npx playwright test --repeat-each=2`: 18/18 passed (19.0s) | Order independence; every repeat registers its own customer. |
 | 10 | 2026-10-23 | with-bugs build, 0/9 passed | See section 6: not a valid signal. |
 | 11 | 2026-10-23 19:48 Almaty | Final `npx playwright test`: 9/9 passed (11.9s) | Recorded in `screenshots/03-local-run-*.png`. |
+| 12 | 2026-10-23 | First run of the new TC-04: failed | Waited for "1 product(s) selected" after the first product; the bar does not appear for one product. Check moved to after the second (R10). |
+| 13 | 2026-10-23 | TC-04 and TC-05 specs, three runs: 5/5 passed each time | After R10, R11. |
+| 14 | 2026-10-23 20:12 Almaty | `npx playwright test`: 10/10 passed (16.1s); `--workers=4 --repeat-each=2`: 20/20 passed (28.5s) | |
+| 15 | 2026-10-23 | `npx playwright test`: 9/10 passed; then TC-03 `--repeat-each=8 --workers=4`: 4/8 passed | TC-03 got 422 from `POST /invoices` (R12). |
+| 16 | 2026-10-23 | TC-03 `--repeat-each=10 --workers=4`: 10/10 passed | After R12. |
+| 17 | 2026-10-23 | `npx playwright test`: 10/10 passed (12.5s); `--workers=4 --repeat-each=2`: 20/20 passed (28.2s) | |
+| 18 | 2026-10-23 20:21 Almaty | Final `npx playwright test`: 10/10 passed (10.3s) | Recorded in `screenshots/03-local-run-*.png` (replaces the run 11 images). |
 
 ## 6. Three checks before commit (from the Week 5 rules)
 
