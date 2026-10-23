@@ -1,4 +1,4 @@
-import { Locator } from '@playwright/test';
+import { Locator, expect } from '@playwright/test';
 import { BasePage } from './base.page';
 
 /**
@@ -44,26 +44,16 @@ export class CheckoutPage extends BasePage {
   }
 
   /**
-   * Step 3: the profile prefill arrives asynchronously, so checking for empty
-   * fields races it; set every field to the expected address instead.
-   * Entering a postcode triggers a lookup that overwrites street, city and state
-   * with a made-up address the invoice API then rejects for the country, so
-   * those three are filled only after the lookup has answered.
+   * Step 3: the form is prefilled from the customer's profile, and the prefilled
+   * postcode and house number each trigger a /postcode-lookup that replaces
+   * street, city and state with a made-up address. The invoice API accepts only
+   * that looked-up address and rejects the real one, so the test waits for both
+   * lookups to land instead of typing an address.
    */
-  async confirmAddress(address: { street: string; houseNumber: string; city: string; state: string; country: string; postalCode: string }) {
-    const lookup = this.page.waitForResponse((r) => r.url().includes('/postcode-lookup'));
-    await this.byTestId('country').selectOption(address.country);
-    await this.byTestId('postal_code').fill(address.postalCode);
-    await this.byTestId('house_number').fill(address.houseNumber);
-    await lookup;
-    const fields: Array<[string, string]> = [
-      ['street', address.street],
-      ['city', address.city],
-      ['state', address.state],
-    ];
-    for (const [id, value] of fields) {
-      await this.byTestId(id).fill(value);
-    }
+  async confirmAddress(profile: { city: string }) {
+    let lookups = 0;
+    await this.page.waitForResponse((r) => r.url().includes('/postcode-lookup') && ++lookups === 2);
+    await expect(this.byTestId('city')).not.toHaveValue(profile.city);
     await this.proceedFromAddress.click();
   }
 
