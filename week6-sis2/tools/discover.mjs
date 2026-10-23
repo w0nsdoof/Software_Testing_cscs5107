@@ -32,6 +32,8 @@ const browser = await chromium.launch();
 const ctx = await browser.newContext();
 const page = await ctx.newPage();
 page.setDefaultTimeout(20000);
+// Wait for the element a step produces instead of a fixed sleep; missing elements are part of the dump.
+const settle = (sel) => page.locator(sel).first().waitFor({ state: 'visible', timeout: 10000 }).catch(() => {});
 
 try {
   // API: products and a sample product
@@ -55,7 +57,7 @@ try {
   await page.locator('[data-test="email"]').fill('nobody@example.com');
   await page.locator('[data-test="password"]').fill('wrongpass1');
   await page.locator('[data-test="login-submit"]').click();
-  await page.waitForTimeout(2500);
+  await settle('[data-test="login-error"]');
   await dump(page, 'Login after invalid credentials');
 
   await page.goto(BASE + '/auth/register');
@@ -63,7 +65,7 @@ try {
   await dump(page, 'Register');
   // submit empty to see validation messages
   await page.locator('[data-test="register-submit"]').click().catch(() => {});
-  await page.waitForTimeout(1500);
+  await settle('[data-test="first-name-error"]');
   await dump(page, 'Register after empty submit');
 
   await page.goto(BASE + '/auth/forgot-password');
@@ -73,13 +75,13 @@ try {
   if (await fp.count()) {
     await fp.fill('customer@practicesoftwaretesting.com');
     await page.locator('[data-test="forgot-password-submit"]').click().catch(() => {});
-    await page.waitForTimeout(2500);
+    await settle('[role=alert]');
     await dump(page, 'Forgot password after known email');
     await page.goto(BASE + '/auth/forgot-password');
     await page.waitForLoadState('networkidle');
     await page.locator('[data-test="email"]').fill('not-an-email');
     await page.locator('[data-test="forgot-password-submit"]').click().catch(() => {});
-    await page.waitForTimeout(1500);
+    await settle('[data-test="email-error"]');
     await dump(page, 'Forgot password after invalid email');
   }
 
@@ -88,7 +90,7 @@ try {
     await page.waitForLoadState('networkidle');
     await dump(page, `Product ${first.name}`);
     await page.locator('[data-test="add-to-cart"]').click();
-    await page.waitForTimeout(2500);
+    await settle('[data-test="cart-quantity"]');
     await dump(page, 'Product after add to cart');
     await page.goto(BASE + '/checkout');
     await page.waitForLoadState('networkidle');
@@ -100,7 +102,7 @@ try {
   await page.locator('[data-test="email"]').fill('customer@practicesoftwaretesting.com');
   await page.locator('[data-test="password"]').fill('welcome01');
   await page.locator('[data-test="login-submit"]').click();
-  await page.waitForTimeout(3000);
+  await settle('[data-test="nav-menu"], [data-test="login-error"]');
   await dump(page, 'After valid login');
   await page.goto(BASE + '/checkout');
   await page.waitForLoadState('networkidle');
@@ -108,12 +110,12 @@ try {
   const proceed1 = page.locator('[data-test="proceed-1"]');
   if (await proceed1.count()) {
     await proceed1.click();
-    await page.waitForTimeout(1500);
+    await settle('[data-test="proceed-2"]');
     await dump(page, 'Checkout step 2 (sign in)');
     const proceed2 = page.locator('[data-test="proceed-2"]');
     if (await proceed2.count()) {
       await proceed2.click();
-      await page.waitForTimeout(1500);
+      await settle('[data-test="proceed-3"]');
       await dump(page, 'Checkout step 3 (billing address)');
       const proceed3 = page.locator('[data-test="proceed-3"]');
       if (await proceed3.count()) {
@@ -123,7 +125,7 @@ try {
           if (await l.count() && !(await l.inputValue())) await l.fill(f === 'postal_code' || f === 'postcode' ? '050000' : 'Test ' + f);
         }
         await proceed3.click();
-        await page.waitForTimeout(1500);
+        await settle('[data-test="payment-method"]');
         await dump(page, 'Checkout step 4 (payment)');
         const pm = page.locator('[data-test="payment-method"]');
         if (await pm.count()) {
