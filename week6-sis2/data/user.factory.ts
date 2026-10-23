@@ -5,6 +5,7 @@ export interface User {
   lastName: string;
   dob: string;          // yyyy-mm-dd
   street: string;
+  houseNumber: string;
   postalCode: string;
   city: string;
   state: string;
@@ -29,7 +30,8 @@ export function newUser(overrides: Partial<User> = {}): User {
     firstName: 'Askar',
     lastName: `Test${suffix.slice(-4)}`,
     dob: '1999-05-14',
-    street: 'Tole bi 59',
+    street: 'Tole bi',
+    houseNumber: '59',
     postalCode: '050000',
     city: 'Almaty',
     state: 'Almaty',

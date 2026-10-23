@@ -8,6 +8,7 @@ export class RegisterPage extends BasePage {
   private readonly dob = this.byTestId('dob');
   private readonly street = this.byTestId('street');
   private readonly postalCode = this.byTestId('postal_code');
+  private readonly houseNumber = this.byTestId('house_number');
   private readonly city = this.byTestId('city');
   private readonly state = this.byTestId('state');
   private readonly country = this.byTestId('country');
@@ -30,6 +31,7 @@ export class RegisterPage extends BasePage {
     await this.dob.fill(user.dob);
     await this.street.fill(user.street);
     await this.postalCode.fill(user.postalCode);
+    await this.houseNumber.fill(user.houseNumber);
     await this.city.fill(user.city);
     await this.state.fill(user.state);
     await this.country.selectOption(user.country);
