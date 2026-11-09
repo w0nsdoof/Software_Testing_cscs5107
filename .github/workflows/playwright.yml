@@ -4,6 +4,11 @@ on:
   push:
   pull_request:
   workflow_dispatch:
+    inputs:
+      shardTotal:
+        description: 'Number of shards (1 or 4)'
+        required: false
+        default: '4'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,8 +25,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3, 4]
-        shardTotal: [4]
+        shardIndex: ${{ fromJSON(inputs.shardTotal == '1' && '[1]' || '[1, 2, 3, 4]') }}
+        shardTotal: ${{ fromJSON(inputs.shardTotal == '1' && '[1]' || '[4]') }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
