@@ -77,3 +77,24 @@ both, show plan and execute it and also is our sis2 ready to be served and doesn
 ```
 
 Raw output (summary): probed the live site to confirm the comparison flow and the reset behaviour, made the changes R10 and R11 in `Review.md`, ran the suite (runs 12 to 14) and checked the README, Description, Prompt and Review files for AI writing patterns. No test code was copied from the other repositories; they were used to find what our suite had missed.
+
+## P5: CI pipeline (SIS 3)
+
+Tool: Claude Code on the student's laptop, models Claude Opus 5.5 (`claude-opus-5-5`) and Claude Fable 5.1 (`claude-fable-5-1`). Date: 2026-11-09.
+
+*Attached: the SIS 3 CI/CD guide (Google Doc export) and submission link.*
+
+```text
+SIS 3 
+Deadline Nov 22, 23:59
+Detailed guide:
+
+https://docs.google.com/document/d/1sbIwbm1AozReLRHfMgarFAfxmVuVkIBRduOlndNuerw/edit?usp=sharing
+
+Submit Google docs report - what you implmented and how it works with screenshots. 
+link to repo add to report too.
+
+what task is about, how it gets submitted. can you do it e2e?
+```
+
+Raw output (summary): the AI chose GitHub Actions, added the CI branch to `playwright.config.ts` (`forbidOnly`, `retries: 2`, `workers: 2`, `blob` + `junit` reporters, failure-only screenshots and videos), `merge.config.ts`, and `.github/workflows/playwright.yml` with a 4-shard matrix and a `merge-reports` job (R13). The first run reproduced the Cloudflare block from R2, so the workflow now starts the Sprint 5 Toolshop stack from `testsmith-io/practice-software-testing` inside the runner and points `BASE_URL` and `API_URL` at it (R14). The upstream web image did not run on `x86_64`, so it was replaced by `nginx:1.23.3-alpine` with the upstream vhost config (R15). Verification: a feature-branch push run, a pull request run (PR #1), and a deliberate `test.only` push that failed on `forbidOnly`; then three `workflow_dispatch` runs each with 1 shard and with 4 shards for the timing table in `README.md`. Run links and medians are in `README.md`, section CI.

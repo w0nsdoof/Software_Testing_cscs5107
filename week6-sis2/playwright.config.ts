@@ -1,19 +1,28 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const isCI = !!process.env.CI;
+
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,                    // every test is independent; run them in parallel
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,        // one recorded retry in CI only; locally we want to see the failure
-  workers: process.env.CI ? 3 : undefined,
+  forbidOnly: isCI,
+  retries: isCI ? 2 : 0,                  // locally we want to see the failure
+  workers: isCI ? 2 : undefined,
   timeout: 60_000,
   expect: { timeout: 10_000 },
-  reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : [['list'], ['html', { open: 'on-failure' }]],
+  reporter: isCI
+    ? [
+        ['list'],
+        ['blob'],
+        ['junit', { outputFile: 'reports/junit.xml' }],
+      ]
+    : [['list'], ['html', { open: 'on-failure' }]],
   use: {
-    baseURL: 'https://practicesoftwaretesting.com',   // 1. relative goto()
+    baseURL: process.env.BASE_URL || 'https://practicesoftwaretesting.com',   // 1. relative goto()
     testIdAttribute: 'data-test',                     // 2. the Toolshop marks elements with data-test
     trace: 'on-first-retry',                          // 3. a recording when it fails
-    screenshot: 'on',                                 //    screenshots of every test for the SIS 2 evidence folder
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
     actionTimeout: 15_000,
   },
   projects: [
