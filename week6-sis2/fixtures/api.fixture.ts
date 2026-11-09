@@ -1,7 +1,7 @@
 import { test as base, APIRequestContext } from '@playwright/test';
 import { newUser, User } from '../data/user.factory';
 
-const API = 'https://api.practicesoftwaretesting.com';
+const API = process.env.API_URL || 'https://api.practicesoftwaretesting.com';
 
 export interface CatalogueProduct {
   id: string;

@@ -33,10 +33,36 @@ jobs:
         run: npm ci
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
+      - name: Start Toolshop container stack (when BASE_URL is not set)
+        if: ${{ vars.BASE_URL == '' }}
+        working-directory: ${{ github.workspace }}
+        run: |
+          git clone --depth 1 https://github.com/testsmith-io/practice-software-testing.git /tmp/pst
+          cd /tmp/pst
+          # exported so the later exec/logs calls interpolate the same compose file
+          export SPRINT=sprint5 DISABLE_LOGGING=true
+          docker compose -f docker-compose.prod.yml up --pull missing -d mariadb laravel-api web angular-ui
+          for i in $(seq 1 30); do
+            if docker compose -f docker-compose.prod.yml exec -T mariadb mysqladmin ping -h localhost -u root -proot --silent 2>/dev/null; then
+              break
+            fi
+            sleep 2
+          done
+          docker compose -f docker-compose.prod.yml exec -T laravel-api php artisan migrate:fresh --seed --force
+          # ng serve compiles the UI on container start; upstream CI allows it 5 minutes
+          for i in $(seq 1 60); do
+            if curl -sf --max-time 5 http://localhost:8091/status >/dev/null && curl -sf --max-time 5 http://localhost:4200 >/dev/null; then
+              exit 0
+            fi
+            sleep 5
+          done
+          docker compose -f docker-compose.prod.yml logs
+          exit 1
       - name: Run Playwright tests
         run: npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
         env:
-          BASE_URL: ${{ vars.BASE_URL }}
+          BASE_URL: ${{ vars.BASE_URL || 'http://localhost:4200' }}
+          API_URL: ${{ vars.API_URL || 'http://localhost:8091' }}
       - name: Upload blob report
         if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
